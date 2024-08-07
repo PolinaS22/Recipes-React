@@ -1,5 +1,3 @@
-  // https://api.edamam.com/search?q=lemon&app_id=194a5f28&app_key=e235180fe7190b4e7ac10a626790d0d8
-
 import { useEffect, useState } from "react";
 import video from './food.mp4';
 import './App.css';
@@ -23,7 +21,6 @@ import Buttons from "./Buttons";
       }
       getRecipes()
     }, [wordSubmitted])
-
 
     const handleSearch = (e) => {
         setMySearch(e.target.value);
@@ -67,7 +64,6 @@ import Buttons from "./Buttons";
             />
          ))}
         </div>
-
       </div>
     )
   }
