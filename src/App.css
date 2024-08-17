@@ -46,6 +46,9 @@ h4 {
     font-size: 20px;
     margin-bottom: 5px;
 }
+h2 {
+    text-align: center;
+}
 
 .cautions {
     margin: 0;
@@ -58,6 +61,8 @@ h4 {
 }
 .buttons {
     margin: 15px;
+    display: flex;
+    justify-content: center;
     
 }
 .btn {
@@ -69,10 +74,52 @@ h4 {
     border-radius: 6px;
     border: 1px solid rgba(10, 10, 10, 0.377);
     cursor: pointer;
+    background-color: rgba(209, 209, 209, 0.452);
 }
 
 input {
     background-color: rgba(240, 255, 255, 0.521);
     border: solid 5px rgba(10, 10, 10, 0.377);
     padding: 5px;
+}
+.ingrImage {
+    border-radius: 50%;
+    border: 2px solid white;
+ }
+
+/* loader */
+.container_loader  {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #1a1a1a94;
+    background-color: rgba(168, 166, 166, 0.733);
+}
+.lds-roller {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+}
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid lightblue;
+    border-right-color: orange;
+    animation: l2 1s infinite linear;
+}
+@keyframes l2 {to{transform: rotate(1turn)}}
+
+
+
+@media all and (max-width: 600px) {    
+    .container, .buttons {
+        flex-wrap: wrap;
+    }
+}
+
+@media all and (max-width: 540px) { 
+    .ingrImage {
+        width: 200px;
+    }
 }

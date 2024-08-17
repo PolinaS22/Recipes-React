@@ -3,6 +3,7 @@ import video from './food.mp4';
 import './App.css';
 import RecipesComponent from "./RecipesComponent";
 import Buttons from "./Buttons";
+import LoaderPage from "./LoaderPage";
 
   function App() {
 
@@ -13,12 +14,31 @@ import Buttons from "./Buttons";
     const [myRecipes, setMyRecipes] = useState([]);
     const [wordSubmitted, setWordSubmitted] = useState('juice');
 
-    useEffect(() => {
-      const getRecipes = async () => {
-        const response = await fetch(`https://api.edamam.com/search?q=${wordSubmitted}&app_id=${API_ID}&app_key=${API_KEY}`);
-        const data = await response.json();
+    const [loader, setLoader] = useState(false)
+
+    // useEffect(() => {
+     
+    //   const getRecipes = async () => {
+    //     const response = await fetch(`https://api.edamam.com/search?q=${wordSubmitted}&app_id=${API_ID}&app_key=${API_KEY}`);
+    //     const data = await response.json();
+    //     setMyRecipes(data.hits);
+    //   }
+    //   getRecipes()
+    // }, [wordSubmitted])
+
+    const getRecipes = async () => {
+      setLoader(true)
+      const response = await fetch(`https://api.edamam.com/search?q=${wordSubmitted}&app_id=${API_ID}&app_key=${API_KEY}`);
+      if (response.ok) {
+        let data = await response.json();
         setMyRecipes(data.hits);
+        setLoader(false)
+      } else {
+        setLoader(false)
       }
+    }
+
+    useEffect(() => {
       getRecipes()
     }, [wordSubmitted])
 
@@ -32,7 +52,12 @@ import Buttons from "./Buttons";
     }
 
     return (
+      
       <div>
+        {
+          loader && <LoaderPage/>
+        }
+
         <div className="container">
           <video autoPlay muted loop>
             <source src={video} type="video/mp4"/>

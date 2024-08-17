@@ -6,7 +6,7 @@ export default function RecipesComponent({label, ingredients, cautions, image, c
             </div>
             <div className="container">
                 <div className="dish">
-                    <img src={image} alt='dish'/>
+                    <img className="ingrImage" src={image} alt='dish'/>
                     <h4>
                         <img src='https://img.icons8.com/?size=100&id=cSOhBbIVmUDP&format=png&color=000000' width='20px' alt='alert'/>
                         CAUTIONS:
