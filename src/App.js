@@ -26,6 +26,7 @@ import LoaderPage from "./LoaderPage";
     //   getRecipes()
     // }, [wordSubmitted])
 
+   useEffect(() => { 
     const getRecipes = async () => {
       setLoader(true)
       const response = await fetch(`https://api.edamam.com/search?q=${wordSubmitted}&app_id=${API_ID}&app_key=${API_KEY}`);
@@ -38,9 +39,9 @@ import LoaderPage from "./LoaderPage";
       }
     }
 
-    useEffect(() => {
-      getRecipes()
-    }, [wordSubmitted])
+    
+      getRecipes();
+    }, [wordSubmitted]);
 
     const handleSearch = (e) => {
         setMySearch(e.target.value);
